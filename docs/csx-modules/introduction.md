@@ -2,6 +2,8 @@
 
 Yantra supports loading CSX files as modules which can be used in JavaScript. There are two ways you can export your code in CSX Module.
 
+Since Yantra is built on .NET, we have given csx module higher priority. So if there are two files with same name and `.csx` and `.js`, `.csx` module has higher priority. This is done so you can create unified module and in absence of Yantra, normal `.js` module can be loaded.
+
 1. Module Function
 2. Export Attributes
 
@@ -96,7 +98,6 @@ static void Module(
 
 // return delegate to local function Module
 return (JSModuleDelegate)Module;
-```
 ```
 
 ### Consume external JavaScript module
