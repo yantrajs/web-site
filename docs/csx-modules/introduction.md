@@ -80,6 +80,25 @@ var v1 = new Vector(1,2,3);
 var v2 = v1.add(new Vector(2,3,4));
 ```
 
+Above code will export "default" named export. To make wildcard export, you can set property `exports` on `module` as shown below.
+
+```c#
+
+static void Module(
+    JSValue exports, 
+    JSValue require, 
+    JSValue module, 
+    string __filename, 
+    string __dirname) {
+
+    module["exports"] = typeof(Vector).Marshal();
+}
+
+// return delegate to local function Module
+return (JSModuleDelegate)Module;
+```
+```
+
 ### Consume external JavaScript module
 
 In CSX Module, you can consume any other javascript module.
@@ -110,7 +129,7 @@ CSX does allow loading external CSX content, however, Yantra module loader does 
 
 ## Export Attributes
 
-In abscence of Return statement, Module loader will look up for defined types decorated with `Export` attribute.
+In absence of Return statement, Module loader will look up for defined types decorated with `Export` attribute.
 
 Above CSX module can be rewritten simply as follow,
 
@@ -145,4 +164,4 @@ class Vector {
 
 There are two attributes. `Export`, `DefaultExport`. `Export` attribute takes a string parameter that acts as export literal.
 
-# Wildcard Export
+`Export` attribute without any name is considered as wildcard export.
