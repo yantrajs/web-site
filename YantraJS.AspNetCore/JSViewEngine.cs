@@ -42,8 +42,8 @@ namespace YantraJS.AspNetCore
             {
 
                 string key = $"__ViewPath__{area}_{controllerName}_{viewName}";
-                if (cache.TryGetValue<JSView>(key, out var view))
-                    return ViewEngineResult.Found(viewName, view);
+                if (cache.TryGetValue<ViewEngineResult>(key, out var viewResult))
+                    return viewResult;
 
                 var checkedLocations = new List<string>();
 
@@ -56,11 +56,12 @@ namespace YantraJS.AspNetCore
                         var env = context.HttpContext.RequestServices.GetService(typeof(IHostingEnvironment)) as IHostingEnvironment;
                         if (env == null)
                             throw new ArgumentNullException();
-                        view = new JSView(env.ContentRootPath, possibleViewLocation);
-                        cache.Set(key, view, new MemoryCacheEntryOptions { 
+                        var view = new JSView(env.ContentRootPath, possibleViewLocation);
+                        viewResult = ViewEngineResult.Found(viewName, view);
+                        cache.Set(key, viewResult, new MemoryCacheEntryOptions { 
                             SlidingExpiration = TimeSpan.FromMinutes(1) 
                         });
-                        return ViewEngineResult.Found(viewName, view);
+                        return viewResult;
                     }
                     checkedLocations.Add(possibleViewLocation);
                 }
