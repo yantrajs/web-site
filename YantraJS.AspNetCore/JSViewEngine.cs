@@ -17,7 +17,7 @@ namespace YantraJS.AspNetCore
 {
     public class JSViewEngine : IViewEngine
     {
-        private static string[] _viewLocationFormats =
+        static readonly string[] _viewLocationFormats =
             new string[] {
                 "Area/{2}/Views/{1}/{0}.js",
                 "Area/{2}/Views/Shared/{1}/{0}.js",
@@ -25,8 +25,9 @@ namespace YantraJS.AspNetCore
                 "Views/Shared/{1}/{0}.js"
             };
 
-        ViewEngineResult NotFound;
+        readonly ViewEngineResult NotFound;
         IMemoryCache? cache;
+        IHostingEnvironment? hostingEnvironment;
         public JSViewEngine()
         {
             this.NotFound = ViewEngineResult.NotFound("", Enumerable.Empty<string>());
@@ -36,7 +37,8 @@ namespace YantraJS.AspNetCore
         public ViewEngineResult FindView(ActionContext context, string viewName, bool isMainPage)
         {
             var services =  context.HttpContext.RequestServices;
-            cache = cache ?? (services.GetRequiredService<IMemoryCache>());
+            cache ??= (services.GetRequiredService<IMemoryCache>());
+            hostingEnvironment ??= (services.GetRequiredService<IHostingEnvironment>());
             context.ActionDescriptor.RouteValues.TryGetValue("area", out var area);
             if (context.ActionDescriptor.RouteValues.TryGetValue("controller", out var controllerName))
             {
@@ -53,10 +55,7 @@ namespace YantraJS.AspNetCore
 
                     if (File.Exists(possibleViewLocation))
                     {
-                        var env = context.HttpContext.RequestServices.GetService(typeof(IHostingEnvironment)) as IHostingEnvironment;
-                        if (env == null)
-                            throw new ArgumentNullException();
-                        var view = new JSView(env.ContentRootPath, possibleViewLocation);
+                        var view = new JSView(hostingEnvironment.ContentRootPath, possibleViewLocation);
                         viewResult = ViewEngineResult.Found(viewName, view);
                         cache.Set(key, viewResult, new MemoryCacheEntryOptions { 
                             SlidingExpiration = TimeSpan.FromMinutes(1) 

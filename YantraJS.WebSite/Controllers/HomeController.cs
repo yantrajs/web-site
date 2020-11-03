@@ -16,10 +16,12 @@ namespace YantraJS.WebSite.Controllers
     {
 
         [HttpGet("Index")]
-        public IActionResult Index()
+        public IActionResult Index(
+            [FromQuery] string msg
+            )
         {
             return View(new HomeModel { 
-                Message = "Demo Message"
+                Message = msg ?? "Demo Message"
             });
         }
     }
