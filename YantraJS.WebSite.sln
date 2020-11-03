@@ -5,11 +5,12 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YantraJS.WebSite", "YantraJS.WebSite\YantraJS.WebSite.csproj", "{4902650A-5C70-4E62-BA74-657B32BD329D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YantraJS.AspNetCore", "YantraJS.AspNetCore\YantraJS.AspNetCore.csproj", "{5888E79D-BC01-4424-B745-ACB1A6A34214}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YantraJS.AspNetCore", "YantraJS.AspNetCore\YantraJS.AspNetCore.csproj", "{5888E79D-BC01-4424-B745-ACB1A6A34214}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E35BB82-92D1-4E47-BB2C-AA07BCE03744}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		NuGet.config = NuGet.config
 	EndProjectSection
 EndProject
 Global

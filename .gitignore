@@ -106,3 +106,4 @@ dist
 /YantraJS.AspNetCore/bin/
 /YantraJS.AspNetCore/obj
 /YantraJS.WebSite/obj
+/YantraJS.WebSite/bin/Debug/netcoreapp3.1

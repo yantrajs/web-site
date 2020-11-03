@@ -5,12 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="NeuroSpeech.AspNetCoreExtensions" Version="1.3.138" />
-    <PackageReference Include="YantraJS.Core" Version="1.0.1-CI-20201030-151300" />
+    
   </ItemGroup>
 
   <ItemGroup>
