@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.ViewEngines;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using WebAtoms.CoreJS.Core;
+using YantraJS.Core;
 
 namespace YantraJS.AspNetCore
 {
@@ -34,7 +34,7 @@ namespace YantraJS.AspNetCore
             using (Yantra.YantraContext yc = new Yantra.YantraContext(this.folder))
             {
                 var text = await yc.RunAsync(folder, "./" + filePath);
-                var view = text["default"].CreateInstance(new WebAtoms.CoreJS.Core.Arguments());
+                var view = text["default"].CreateInstance(new YantraJS.Core.Arguments());
                 view["model"] = context.ViewData.Model.Marshal();
                 var data = view.InvokeMethod("render", new Arguments()).ToString();
                 context.Writer.WriteLine(data);

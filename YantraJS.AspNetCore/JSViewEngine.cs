@@ -11,7 +11,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebAtoms.CoreJS.Core;
 
 namespace YantraJS.AspNetCore
 {
@@ -19,6 +18,10 @@ namespace YantraJS.AspNetCore
     {
         static readonly string[] _viewLocationFormats =
             new string[] {
+                "dist/Area/{2}/Views/{1}/{0}.js",
+                "dist/Area/{2}/Views/Shared/{1}/{0}.js",
+                "dist/Views/{1}/{0}.js",
+                "dist/Views/Shared/{1}/{0}.js",
                 "Area/{2}/Views/{1}/{0}.js",
                 "Area/{2}/Views/Shared/{1}/{0}.js",
                 "Views/{1}/{0}.js",
