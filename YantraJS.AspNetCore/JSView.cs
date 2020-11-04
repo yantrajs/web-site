@@ -31,12 +31,12 @@ namespace YantraJS.AspNetCore
 
         public async Task RenderAsync(ViewContext context)
         {
-            using (Yantra.YantraContext yc = new Yantra.YantraContext(this.folder))
+            using (var yc = new YantraContext(this.folder))
             {
                 var text = await yc.RunAsync(folder, "./" + filePath);
-                var view = text["default"].CreateInstance(new YantraJS.Core.Arguments());
+                var view = text["default"].CreateInstance();
                 view["model"] = context.ViewData.Model.Marshal();
-                var data = view.InvokeMethod("render", new Arguments()).ToString();
+                var data = view.InvokeMethod("render").ToString();
                 context.Writer.WriteLine(data);
             }
         }
