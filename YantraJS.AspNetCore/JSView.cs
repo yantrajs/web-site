@@ -9,6 +9,9 @@ namespace YantraJS.AspNetCore
 {
     public class JSView : IView
     {
+        static KeyString model = "model";
+        static KeyString render = "render";
+
         readonly string filePath;
         readonly string folder;
 
@@ -34,9 +37,9 @@ namespace YantraJS.AspNetCore
             using (var yc = new YantraContext(this.folder))
             {
                 var text = await yc.RunAsync(folder, "./" + filePath);
-                var view = text["default"].CreateInstance();
-                view["model"] = context.ViewData.Model.Marshal();
-                var data = view.InvokeMethod("render").ToString();
+                var view = text[KeyStrings.@default].CreateInstance();
+                view[model] = context.ViewData.Model.Marshal();
+                var data = view.InvokeMethod(render).ToString();
                 context.Writer.WriteLine(data);
             }
         }
