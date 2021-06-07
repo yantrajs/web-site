@@ -6,11 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="NeuroSpeech.AspNetCoreExtensions" Version="1.3.197" />
-    
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\YantraJS.AspNetCore\YantraJS.AspNetCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
 </Project>
