@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module":"None",
+        "sourceMap": true,
+        "outFile": "./dist.js",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "allowJs": true,
+        "jsx": "react",
+        "jsxFactory": "XNode.create",
+        "baseUrl": ".",
+        "paths": {
+            "@web-atoms/samples/src/*": [ "./src/*" ]
+        },
+        "lib": [
+            "es6",
+            "dom"
+        ]
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+		"node_modules",
+        "tests"
+    ]
+}
