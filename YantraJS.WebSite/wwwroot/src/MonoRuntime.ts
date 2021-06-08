@@ -15,20 +15,21 @@ interface IModule {
 
 class WebAssemblyApp {
 
+    public initAsync: any;
+
+    private init: any;
+
+    private cache: any;
+
     constructor() {
-        this.initAsync = new Promise(() => {
-            
+        this.initAsync = new Promise((r) => {
+            this.init = r;
         });
     }
 
-    init() {
-        
-    }
-
-
 }
 
-const theApp = new WebAssemblyApp();
+let theApp = new WebAssemblyApp();
 
 class MonoRuntime {
     public loadRuntime = Module.cwrap ("mono_wasm_load_runtime", null, ["string", "number"]);
@@ -41,7 +42,7 @@ class MonoRuntime {
 
     constructor() {
         this.loadRuntime ("managed", 1);
-        theApp.init ();
+        (theApp as any).init ();
     }
 
     public convertToString(monoObj) {
