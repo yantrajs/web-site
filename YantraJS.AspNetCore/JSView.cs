@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using YantraJS.AspNetCore.Modules;
 using YantraJS.Core;
 using YantraJS.Core.Clr;
 
@@ -13,6 +14,7 @@ namespace YantraJS.AspNetCore
 {
     public class JSView : IView
     {
+        static KeyString AspNetCore = nameof(AspNetCore);
         static KeyString model = nameof(model);
         static KeyString render = nameof(render);
         static KeyString services = nameof(services);
@@ -43,12 +45,12 @@ namespace YantraJS.AspNetCore
             using (var yc = new YantraContext(this.folder))
             {
                 var ys = new YantraServiceResolver(context.HttpContext.RequestServices).Marshal();
+                var aspNetCore = typeof(JSAspNetCoreModule).Marshal() as JSObject;
+                yc.RegisterModule(AspNetCore, aspNetCore);
                 yc[services] = ys;
                 var text = await yc.RunAsync(folder, "./" + filePath);
-                var view = text[KeyStrings.@default].CreateInstance();
-                view[model] = context.ViewData.Model.Marshal();
-                view[services] = ys;
-                view[viewContext] = context.Marshal();
+                var jsViewClass = text[KeyStrings.@default];
+                var view = jsViewClass.CreateInstance(context.Marshal());
                 var data = view.InvokeMethod(render).ToString();
                 context.Writer.WriteLine(data);
             }

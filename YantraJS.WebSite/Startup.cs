@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NeuroSpeech;
 using YantraJS.AspNetCore;
+using YantraJS.Emit;
 
 namespace YantraJS.WebSite
 {
@@ -39,6 +40,9 @@ namespace YantraJS.WebSite
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            DictionaryCodeCache.Current = new AssemblyCodeCache();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

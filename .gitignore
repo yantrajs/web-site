@@ -107,3 +107,4 @@ dist
 /YantraJS.AspNetCore/obj
 /YantraJS.WebSite/obj
 /YantraJS.WebSite/bin
+/YantraJS.WebSite/cache

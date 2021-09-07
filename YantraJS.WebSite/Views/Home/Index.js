@@ -1,13 +1,8 @@
-﻿// const clr = require("clr").default;
+﻿const { View } = require("AspNetCore");
 
-// const markdownService = clr.getClass("");
-
-export default class IndexView {
+export default class IndexView extends View {
 
     render() {
-
-        // const serivce = this.services.resolve("....");
-
         return `Demo ${this.model.message}`;
     }
 
