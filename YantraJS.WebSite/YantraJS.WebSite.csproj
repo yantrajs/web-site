@@ -17,6 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="cache\**" />
+    <Content Remove="cache\**" />
+    <EmbeddedResource Remove="cache\**" />
+    <None Remove="cache\**" />
     <None Remove="Views\**\*.js" />
   </ItemGroup>
 

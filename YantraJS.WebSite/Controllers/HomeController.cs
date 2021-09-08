@@ -11,11 +11,10 @@ namespace YantraJS.WebSite.Controllers
         public string Message { get; set; }
     }
 
-    [Route("Home")]
     public class HomeController : Controller
     {
 
-        [HttpGet("Index")]
+        [HttpGet("index.html")]
         public IActionResult Index(
             [FromQuery] string msg
             )

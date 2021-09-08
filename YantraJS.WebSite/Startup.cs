@@ -55,6 +55,11 @@ namespace YantraJS.WebSite
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+
+                endpoints.MapFallback((r) => {
+                    r.Response.Redirect("/index.html");
+                    return Task.CompletedTask;
+                });
             });
         }
     }
