@@ -15,4 +15,13 @@
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\**\*.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\**\*.js" />
+  </ItemGroup>
+
 </Project>

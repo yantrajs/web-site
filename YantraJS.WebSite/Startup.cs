@@ -43,10 +43,10 @@ namespace YantraJS.WebSite
 
             DictionaryCodeCache.Current = new AssemblyCodeCache();
 
-            if (env.IsDevelopment())
-            {
+            // if (env.IsDevelopment())
+            // {
                 app.UseDeveloperExceptionPage();
-            }
+            // }
 
             app.UseRouting();
 
