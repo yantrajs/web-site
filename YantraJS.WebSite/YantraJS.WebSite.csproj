@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Views\**\*.js" />
+    <Content Include="Views\**\*.js" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
