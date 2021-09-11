@@ -25,11 +25,11 @@ namespace YantraJS.WebSite.Services
                 .Build();
         }
 
-        public async Task<JSValue> ProcessMarkdownAsync(string url)
+        public async Task<string> ProcessMarkdownAsync(string url)
         {
             var content = await client.GetStringAsync(url);
 
-            return new JSString( Markdown.ToHtml(content, pipeline));
+            return Markdown.ToHtml(content, pipeline);
         }
 
     }
