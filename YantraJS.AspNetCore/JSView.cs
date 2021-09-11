@@ -42,8 +42,10 @@ namespace YantraJS.AspNetCore
 
         public async Task RenderAsync(ViewContext context)
         {
-            using (var yc = new YantraContext(this.folder))
+            var s = new SynchronizationContext();
+            using (var yc = new YantraContext(this.folder, s))
             {
+                
                 var ys = new YantraServiceResolver(context.HttpContext.RequestServices).Marshal();
                 var aspNetCore = typeof(JSAspNetCoreModule).Marshal() as JSObject;
                 yc.RegisterModule(AspNetCore, aspNetCore);
@@ -51,8 +53,19 @@ namespace YantraJS.AspNetCore
                 var text = await yc.RunAsync(folder, "./" + filePath);
                 var jsViewClass = text[KeyStrings.@default];
                 var view = jsViewClass.CreateInstance(context.Marshal());
-                var data = view.InvokeMethod(render).ToString();
-                context.Writer.WriteLine(data);
+                var data = view.InvokeMethod(render);
+
+                if (data.IsString)
+                {
+                    context.Writer.WriteLine(data);
+                } else
+                {
+                    if(data is JSPromise promise)
+                    {
+                        data = await promise.Task;
+                    }
+                    context.Writer.WriteLine(data);
+                }
             }
         }
     }

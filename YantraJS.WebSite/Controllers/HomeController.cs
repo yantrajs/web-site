@@ -15,6 +15,7 @@ namespace YantraJS.WebSite.Controllers
     {
 
         [HttpGet("index.html")]
+        [ResponseCache(Location = ResponseCacheLocation.Any, Duration = 300)]
         public IActionResult Index(
             [FromQuery] string msg
             )

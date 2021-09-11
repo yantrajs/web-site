@@ -28,6 +28,9 @@ namespace YantraJS.WebSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.RegisterAssembly(typeof(Startup).Assembly);
+
+            services.AddHttpClient();
+
             services.AddRouting();
             services.AddMvc(c => { 
                 
