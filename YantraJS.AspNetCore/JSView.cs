@@ -43,6 +43,7 @@ namespace YantraJS.AspNetCore
         public async Task RenderAsync(ViewContext context)
         {
             var s = new SynchronizationContext();
+
             using (var yc = new YantraContext(this.folder, s))
             {
                 
@@ -57,14 +58,14 @@ namespace YantraJS.AspNetCore
 
                 if (data.IsString)
                 {
-                    context.Writer.WriteLine(data);
+                    await context.Writer.WriteLineAsync(data.ToString());
                 } else
                 {
                     if(data is JSPromise promise)
                     {
                         data = await promise.Task;
                     }
-                    context.Writer.WriteLine(data);
+                    await context.Writer.WriteLineAsync(data.ToString());
                 }
             }
         }
