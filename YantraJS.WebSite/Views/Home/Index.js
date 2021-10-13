@@ -28,6 +28,7 @@ export default class IndexView extends View {
         <ul>
             <li><a href="https://github.com/yantrajs/yantra/discussions">Discussions</a></li>
             <li><a href="https://github.com/yantrajs/yantra/issues">Issues</a></li>
+            <li><a href="https://github.com/yantrajs/yantra/wiki">Documentation</a></li>
         </ul>
     </p>
     <p>
