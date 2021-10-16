@@ -9,6 +9,9 @@ using YantraJS.Core;
 
 namespace YantraJS.WebSite.Services
 {
+    ///<summary>
+    ///    We will use this dependency in JavaScript to convert Markdown to html
+    ///</summary>
     [DIRegister(ServiceLifetime.Singleton)]
     public class MarkdownService
     {

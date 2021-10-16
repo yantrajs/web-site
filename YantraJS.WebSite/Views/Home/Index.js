@@ -1,5 +1,15 @@
-﻿const { View } = require("AspNetCore");
-const clr = require("clr").default;
+﻿/**
+ * Load `clr` and `AspNetCore` module.
+ * 
+ * 1. Derive a class from `View` and return it as default exprot
+ * 2. Load class `YantraJS.WebSite.Services.MarkdownService` from `YantraJS.WebSite` assembly
+ * 3. Resolve service with MarkdownService class retrieved in step 2
+ * 4. Call processMarkdownAsync method and await on it
+ * 5. Return text to be rendered
+ */
+
+ const clr = require("clr").default;
+ const { View } = require("AspNetCore");
 
 const markdownServiceType = clr.getClass("YantraJS.WebSite.Services.MarkdownService, YantraJS.WebSite");
 

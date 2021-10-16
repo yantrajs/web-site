@@ -14,7 +14,11 @@ namespace YantraJS.AspNetCore
 {
     public class JSView : IView
     {
+
+        // Module name
         static KeyString AspNetCore = nameof(AspNetCore);
+
+
         static KeyString model = nameof(model);
         static KeyString render = nameof(render);
         static KeyString services = nameof(services);
@@ -44,23 +48,42 @@ namespace YantraJS.AspNetCore
         {
             var s = new SynchronizationContext();
 
+            // Create new JavaScript context
             using (var yc = new YantraContext(this.folder, s))
             {
-                
-                var ys = new YantraServiceResolver(context.HttpContext.RequestServices).Marshal();
+
+                // Wrap aspNetCore module
+                // which will export View class                
                 var aspNetCore = typeof(JSAspNetCoreModule).Marshal() as JSObject;
                 yc.RegisterModule(AspNetCore, aspNetCore);
+
+                // Wrap services
+                var ys = new YantraServiceResolver(context.HttpContext.RequestServices).Marshal();
+
+                // Expose services on context
                 yc[services] = ys;
-                var text = await yc.RunAsync(folder, "./" + filePath);
-                var jsViewClass = text[KeyStrings.@default];
+
+                // Load JavaScript module at given location and execute it
+                // it will return module exports
+                var exports = await yc.RunAsync(folder, "./" + filePath);
+
+                // load `default`
+                var jsViewClass = exports[KeyStrings.@default];
+
+                // Create new instance of default export
+                // pass the context
                 var view = jsViewClass.CreateInstance(context.Marshal());
+
+                // Invoke render method of the view
                 var data = view.InvokeMethod(render);
 
+                // if returned data was string, write it
                 if (data.IsString)
                 {
                     await context.Writer.WriteLineAsync(data.ToString());
                 } else
                 {
+                    // if it is a promise, you can await on it
                     if(data is JSPromise promise)
                     {
                         data = await promise.Task;
