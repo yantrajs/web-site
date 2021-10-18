@@ -42,7 +42,7 @@ export default class IndexView extends View {
     </style>
 </head>
 <body>
-    <h1>YantraJS (Machine in Sanskrit) is a JavaScript Engine</h1>
+    <h1>YantraJS (Machine in Sanskrit)</h1>
     <p>
         Please visit GitHub repo at <a href="https://github.com/yantrajs/yantra">YantraJS</a>
         <ul>
