@@ -51,6 +51,10 @@ export default class IndexView extends View {
             <li><a href="https://github.com/yantrajs/yantra/wiki">Documentation</a></li>
         </ul>
 
+        <p>
+        To access LGPL source code and binaries, please visit <a href="https://github.com/yantrajs/yantra">YantraJS</a>
+        </p>
+
         To Purchase license, click on the following links.
         <table>
             <tr>
