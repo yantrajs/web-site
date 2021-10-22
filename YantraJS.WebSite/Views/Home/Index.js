@@ -70,6 +70,12 @@ export default class IndexView extends View {
     <p>
         ${content}
     </p>
+    <p>
+        <h3>Sponsor - Web Atoms (React Native alike) for Xamarin Forms</h3>
+        <p>This project is supported by Web Atoms, Web Atoms provides JSX+JavaScript bridge for Xamarin Forms 
+        which lets you write Xamarin Forms apps in React Native style.</p>
+        <a href="https://www.webatoms.in"><img src="https://cdn.jsdelivr.net/gh/web-atoms/resources@v1.0.1/ads/landscape/JSX-for-Xamarin.Forms.gif" style="border:none"/></a>
+    </p>
 </body>
 </html>
 `;
