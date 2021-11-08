@@ -50,22 +50,6 @@ export default class IndexView extends View {
             <li><a href="https://github.com/yantrajs/yantra/issues">Issues</a></li>
             <li><a href="https://github.com/yantrajs/yantra/wiki">Documentation</a></li>
         </ul>
-
-        <p>
-        To access LGPL source code and binaries, please visit <a href="https://github.com/yantrajs/yantra">YantraJS</a>
-        </p>
-
-        To Purchase license, click on the following links.
-        <table>
-            <tr>
-                <td>YantraJS Standard License for $99 per Application/Website</td>
-                <td><a href="https://www.webatoms.in/purchase/yantrajs.sdk.standard"><button>Buy Now</button></a></td>
-            </tr>
-            <tr>
-                <td>YantraJS Enterprise License for $999 per Application/Website</td>
-                <td><a href="https://www.webatoms.in/purchase/yantrajs.sdk.enterprise"><button>Buy Now</button></a></td>
-            </tr>
-        </table>
     </p>
     <p>
         ${content}
