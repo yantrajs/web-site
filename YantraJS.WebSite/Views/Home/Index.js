@@ -89,16 +89,6 @@ export default class IndexView extends View {
             <h3>Support YantraJS</h3>
             <a href="https://patreon.com/yantrajs">patreon.com/yantrajs</a>
         </div>
-        <div style="width: 700px">
-            <h3>Sponsor - Web Atoms (React Native alike) for Xamarin Forms</h3>
-            <p>This project is supported by Web Atoms, Web Atoms provides JSX+JavaScript bridge for Xamarin Forms 
-            which lets you write Xamarin Forms apps in React Native style.</p>
-            <div style="margin-left: auto; margin-right: auto; width: 650px;">
-                <a href="https://www.webatoms.in"
-                   style="text-align: center"
-                   target="_blank"><img src="https://cdn.jsdelivr.net/gh/web-atoms/resources@v1.0.1/ads/landscape/JSX-for-Xamarin.Forms.gif" style="border:none; width: 650px;"/></a>
-            </div>
-        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js"></script>
     <script>
